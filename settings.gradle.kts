@@ -17,4 +17,4 @@ pluginManagement {
 
 rootProject.name = "Forgot"
 
-include(":android", ":desktop", ":common")
+include(":common", ":android", ":desktop")
