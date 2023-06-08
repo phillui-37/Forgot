@@ -36,4 +36,7 @@ android {
             isMinifyEnabled = true
         }
     }
+    packagingOptions {
+        resources.excludes += "DebugProbesKt.bin"
+    }
 }
