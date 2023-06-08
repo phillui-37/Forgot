@@ -1,0 +1,12 @@
+## TODO card
+- name
+- description
+- deadline
+- reminder
+- ?? routine
+- tag (multiple)
+- category (one and only one)
+- parent todo (if N/A, hide)
+- sub todo count (if 0, hide)
+  - can have infinite level of sub todo
+  - sub todo can be filtered out by tag/category/search individually,
