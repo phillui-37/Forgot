@@ -13,6 +13,8 @@ object Versions {
     object AndroidXKTX {
         val lifecycle = "2.6.1"
     }
+
+    val coil = "2.4.0"
 }
 
 kotlin {
@@ -53,6 +55,9 @@ kotlin {
                 implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.AndroidXKTX.lifecycle}")
 
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutine}")
+
+                implementation("io.coil-kt:coil-compose:${Versions.coil}")
+                implementation("io.coil-kt:coil-svg:${Versions.coil}")
             }
         }
         val androidUnitTest by getting {
@@ -74,7 +79,7 @@ android {
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
         minSdk = 24
-        multiDexEnabled = true
+//        multiDexEnabled = true
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11

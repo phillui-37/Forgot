@@ -23,7 +23,7 @@ android {
     defaultConfig {
         applicationId = "com.fgostudio.android"
         minSdk = 24
-        multiDexEnabled = true
+//        multiDexEnabled = true
         versionCode = 1
         versionName = "1.0-SNAPSHOT"
     }

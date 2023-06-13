@@ -11,28 +11,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.fgostudio.common.view.TodoCardWidgetRow
 
 @Composable
 fun App() {
     var text by remember { mutableStateOf("Hello, World!") }
-    val platformName = getPlatformName()
 
     Column {
-        Row {
-            Spacer(modifier = Modifier.width(10.dp))
-            Button(
-                onClick = {
-                    text = "Hello, ${platformName}"
-                }) {
-                Text(text)
-            }
-        }
-        Spacer(modifier = Modifier.width(10.dp))
-        Button(
-            onClick = {
-            text = "Hello, ${platformName}"
-        }) {
-            Text(text)
-        }
+        TodoCardWidgetRow()
     }
 }
