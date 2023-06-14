@@ -1,20 +1,45 @@
 package com.fgostudio.common.view
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.loadSvgPainter
 import androidx.compose.ui.res.useResource
 import androidx.compose.ui.unit.Density
-
-
-//typealias WidgetEntry = (Boolean, )
+import androidx.compose.ui.unit.dp
+import com.fgostudio.common.util.getSvgPainter
 
 @Composable
 actual fun TodoCardWidgetRow(
-    vararg widgets: Array<@Composable (Boolean) -> Unit>
+    content: @Composable TodoCardWidgetRowScope.() -> Unit
 ) {
     var isExpand by remember { mutableStateOf(false) }
 
-    val painter = useResource("apps.svg") { loadSvgPainter(it, Density(10f)) }
-    Image(painter, null)
+    val scope = object: TodoCardWidgetRowScope {
+        override val isExpand: Boolean
+            get() = isExpand
+    }
+
+//    val painter = useResource("apps.svg") { loadSvgPainter(it, Density(10f)) }
+//    Image(painter, null)
+    Row(
+        modifier = Modifier.padding(10.dp)
+    ) {
+        scope.content()
+        Spacer(Modifier.weight(1f))
+        Button(
+            onClick = { isExpand = !isExpand },
+            colors = ButtonDefaults.buttonColors(Color.Transparent),
+        ) {
+            Image(getSvgPainter(if (isExpand) "collapse" else "expand"), null, Modifier.width(40.dp))
+        }
+    }
 }

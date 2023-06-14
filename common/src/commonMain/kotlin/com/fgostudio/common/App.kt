@@ -11,6 +11,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.fgostudio.common.util.getSvgPainter
+import com.fgostudio.common.view.TodoCardWidget
 import com.fgostudio.common.view.TodoCardWidgetRow
 
 @Composable
@@ -18,6 +20,25 @@ fun App() {
     var text by remember { mutableStateOf("Hello, World!") }
 
     Column {
-        TodoCardWidgetRow()
+        TodoCardWidgetRow {
+            TodoCardWidget(
+                getSvgPainter("apps.svg"),
+                "test1",
+                isExpand,
+                false,
+            ) {}
+            TodoCardWidget(
+                getSvgPainter("apps.svg"),
+                "test2",
+                isExpand,
+                false,
+            ) {}
+            TodoCardWidget(
+                getSvgPainter("apps.svg"),
+                "test3",
+                isExpand,
+                false,
+            ) {}
+        }
     }
 }

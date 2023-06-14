@@ -2,7 +2,11 @@ package com.fgostudio.common.view
 
 import androidx.compose.runtime.Composable
 
+interface TodoCardWidgetRowScope {
+    val isExpand: Boolean
+}
+
 @Composable
 expect fun TodoCardWidgetRow(
-    vararg widgets: Array<@Composable (Boolean) -> Unit>
+    content: @Composable TodoCardWidgetRowScope.() -> Unit
 )

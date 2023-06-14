@@ -2,6 +2,9 @@ package com.fgostudio.common.util
 
 import android.content.Context
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.platform.LocalContext
+import coil.compose.AsyncImagePainter
 import coil.compose.rememberAsyncImagePainter
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
@@ -23,3 +26,8 @@ fun getSvgImageRequest(
 
 @Composable
 fun ImageRequest.toImagePainter() = rememberAsyncImagePainter(this)
+
+@Composable
+actual fun getSvgPainter(filename: String): Painter {
+    return getSvgImageRequest(LocalContext.current, filename.removeSuffix(".svg")).toImagePainter()
+}
