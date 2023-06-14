@@ -29,7 +29,15 @@ compose.desktop {
     application {
         mainClass = "MainKt"
         nativeDistributions {
-            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+            linux {
+                targetFormats(TargetFormat.Deb)
+            }
+            windows {
+                targetFormats(TargetFormat.Msi)
+            }
+            macOS {
+                targetFormats(TargetFormat.Dmg)
+            }
             packageName = "Forgot"
             packageVersion = "1.0.0"
         }
