@@ -16,6 +16,7 @@ import androidx.compose.ui.res.useResource
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
 import com.fgostudio.common.util.getSvgPainter
+import com.fgostudio.common.widgetExt.defaultConf.ButtonConf
 
 @Composable
 actual fun TodoCardWidgetRow(
@@ -37,7 +38,8 @@ actual fun TodoCardWidgetRow(
         Spacer(Modifier.weight(1f))
         Button(
             onClick = { isExpand = !isExpand },
-            colors = ButtonDefaults.buttonColors(Color.Transparent),
+            elevation = ButtonConf.ElevationConf.No(),
+            colors = ButtonConf.ColorConf.Transparent(),
         ) {
             Image(getSvgPainter(if (isExpand) "collapse" else "expand"), null, Modifier.width(40.dp))
         }
