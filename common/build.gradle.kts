@@ -45,6 +45,8 @@ kotlin {
             }
         }
         val androidMain by getting {
+            kotlin.srcDir("build/generated/ksp/android/androidDebug/kotlin")
+            kotlin.srcDir("build/generated/ksp/android/androidRelease/kotlin")
             dependencies {
                 api("androidx.appcompat:appcompat:1.6.1")
                 api("androidx.core:core-ktx:1.10.1")
@@ -68,6 +70,7 @@ kotlin {
             }
         }
         val desktopMain by getting {
+            kotlin.srcDir("build/generated/ksp/desktop/desktopMain/kotlin")
             dependencies {
                 api(compose.preview)
             }
