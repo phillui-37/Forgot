@@ -3,6 +3,7 @@ plugins {
     kotlin("multiplatform")
     id("org.jetbrains.compose")
     id("com.android.library")
+    id("com.google.devtools.ksp")
 }
 
 group = "com.fgostudio"
@@ -15,6 +16,7 @@ object Versions {
     }
 
     val coil = "2.4.0"
+    val room = "2.5.0"
 }
 
 kotlin {
@@ -32,6 +34,7 @@ kotlin {
                 implementation(platform("io.arrow-kt:arrow-stack:${Versions.arrow}"))
                 implementation("io.arrow-kt:arrow-core")
                 implementation("io.arrow-kt:arrow-fx-coroutines")
+                implementation("io.arrow-kt:arrow-optics")
 
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutine}")
             }
@@ -45,6 +48,8 @@ kotlin {
             dependencies {
                 api("androidx.appcompat:appcompat:1.6.1")
                 api("androidx.core:core-ktx:1.10.1")
+
+                implementation("androidx.room:room-runtime:${Versions.room}")
 
                 implementation("androidx.activity:activity-ktx:1.7.2")
                 implementation("androidx.collection:collection-ktx:1.2.0")
@@ -87,4 +92,15 @@ android {
     packagingOptions {
         resources.excludes += "DebugProbesKt.bin"
     }
+}
+
+dependencies {
+    arrayOf(
+        "io.arrow-kt:arrow-optics-ksp-plugin:${Versions.arrow}"
+    ).forEach {
+        add("kspAndroid", it)
+        add("kspCommonMainMetadata", it)
+        add("kspDesktop", it)
+    }
+    add("kspAndroid","androidx.room:room-compiler:${Versions.room}")
 }
