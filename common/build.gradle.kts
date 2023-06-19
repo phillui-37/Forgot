@@ -31,11 +31,13 @@ kotlin {
                 api(compose.foundation)
                 api(compose.material)
 
+                // fp support
                 implementation(platform("io.arrow-kt:arrow-stack:${Versions.arrow}"))
                 implementation("io.arrow-kt:arrow-core")
                 implementation("io.arrow-kt:arrow-fx-coroutines")
                 implementation("io.arrow-kt:arrow-optics")
 
+                // coroutine
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutine}")
             }
         }
@@ -51,8 +53,10 @@ kotlin {
                 api("androidx.appcompat:appcompat:1.6.1")
                 api("androidx.core:core-ktx:1.10.1")
 
+                // sqlite
                 implementation("androidx.room:room-runtime:${Versions.room}")
 
+                // android ktx
                 implementation("androidx.activity:activity-ktx:1.7.2")
                 implementation("androidx.collection:collection-ktx:1.2.0")
                 implementation("androidx.lifecycle:lifecycle-livedata-core-ktx:${Versions.AndroidXKTX.lifecycle}")
@@ -61,8 +65,10 @@ kotlin {
                 implementation("androidx.lifecycle:lifecycle-runtime-ktx:${Versions.AndroidXKTX.lifecycle}")
                 implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.AndroidXKTX.lifecycle}")
 
+                // coroutine
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutine}")
 
+                // svg support
                 implementation("io.coil-kt:coil-compose:${Versions.coil}")
                 implementation("io.coil-kt:coil-svg:${Versions.coil}")
             }
@@ -76,6 +82,10 @@ kotlin {
             kotlin.srcDir("build/generated/ksp/desktop/desktopMain/kotlin")
             dependencies {
                 api(compose.preview)
+
+                // logging
+                implementation("org.slf4j:slf4j-api:2.0.7")
+                implementation("ch.qos.logback:logback-classic:1.4.8")
             }
         }
         val desktopTest by getting
