@@ -20,6 +20,7 @@ import com.fgostudio.common.widgetExt.defaultConf.ButtonConf
 
 @Composable
 actual fun TodoCardWidgetRow(
+    modifier: Modifier,
     content: @Composable TodoCardWidgetRowScope.() -> Unit
 ) {
     var isExpand by remember { mutableStateOf(false) }
@@ -29,10 +30,10 @@ actual fun TodoCardWidgetRow(
             get() = isExpand
     }
 
-//    val painter = useResource("apps.svg") { loadSvgPainter(it, Density(10f)) }
-//    Image(painter, null)
+    val localModifier = Modifier.padding(10.dp)
+
     Row(
-        modifier = Modifier.padding(10.dp)
+        modifier = modifier.then(localModifier)
     ) {
         scope.content()
         Spacer(Modifier.weight(1f))
